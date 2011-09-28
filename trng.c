@@ -39,7 +39,7 @@ int trng(unsigned char *out, unsigned int size, unsigned int iter) {
       trng_step(&ctx, buf, step++);
     if (step >= iter * bufSize) {
       tmp = 0;
-      for (j=0; j<bufSize; j++)
+      for (j=0; j<bufSize/2; j++)
         tmp ^= buf[j];
       out[i++] = tmp;
     }
