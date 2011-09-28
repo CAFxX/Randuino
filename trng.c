@@ -1,3 +1,4 @@
+#include <WProgram.h>
 #include "trng.h"
 
 // analog pin to read noise from
