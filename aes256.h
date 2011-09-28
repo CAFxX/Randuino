@@ -38,6 +38,9 @@ extern "C" {
     void aes256_encrypt_ecb(aes256_context *, uint8_t * /* plaintext */);
     void aes256_decrypt_ecb(aes256_context *, uint8_t * /* cipertext */);
 
+    // perform a self-test of the implementation; returns non-zero on error
+    int aes256_test();
+
 #ifdef __cplusplus
 }
 #endif

@@ -5,7 +5,7 @@ extern "C" {
 #endif
 
   int trng(unsigned char *out, unsigned int size, unsigned int iter);
-  
+
 #ifdef __cplusplus
 }
 #endif

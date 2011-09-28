@@ -46,3 +46,4 @@ int trng(unsigned char *out, unsigned int size, unsigned int iter) {
   aes256_done(&ctx);
   return 0;
 }
+
