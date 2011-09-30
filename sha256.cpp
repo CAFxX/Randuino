@@ -111,7 +111,7 @@ void Sha256Class::write(uint8_t data) {
 }
 
 void Sha256Class::pad() {
-  // Implement SHA-256 padding (fips180-2 §5.1.1)
+  // Implement SHA-256 padding (fips180-2 ï¿½5.1.1)
 
   // Pad with 0x80 followed by 0x00 until the end of the block
   addUncounted(0x80);
@@ -183,3 +183,4 @@ uint8_t* Sha256Class::resultHmac(void) {
   for (i=0; i<HASH_LENGTH; i++) write(innerHash[i]);
   return result();
 }
+

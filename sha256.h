@@ -20,7 +20,6 @@
 #define Sha256_h
 
 #include <inttypes.h>
-#include "Print.h"
 
 #define HASH_LENGTH 32
 #define BLOCK_LENGTH 64
@@ -29,20 +28,19 @@ union _buffer {
   uint8_t b[BLOCK_LENGTH];
   uint32_t w[BLOCK_LENGTH/4];
 };
+
 union _state {
   uint8_t b[HASH_LENGTH];
   uint32_t w[HASH_LENGTH/4];
 };
 
-class Sha256Class : public Print
+struct Sha256Class
 {
   public:
     void init(void);
-    void initHmac(const uint8_t* secret, int secretLength);
     uint8_t* result(void);
-    uint8_t* resultHmac(void);
-    virtual void write(uint8_t);
-    using Print::write;
+    void write(uint8_t);
+
   private:
     void pad();
     void addUncounted(uint8_t data);
@@ -57,3 +55,6 @@ class Sha256Class : public Print
 };
 
 #endif
+
+
+
