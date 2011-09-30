@@ -183,4 +183,3 @@ uint8_t* Sha256Class::resultHmac(void) {
   for (i=0; i<HASH_LENGTH; i++) write(innerHash[i]);
   return result();
 }
-Sha256Class Sha256;

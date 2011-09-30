@@ -18,7 +18,7 @@ static void trng_benchmark() {
   unsigned long t;
   unsigned char buf[1024], i, j;
   float tp;
-  for (i=0; i<=4; i++) {
+  for (i=7; i<=14; i++) {
     for (j=0; j<=10; j++) {
       Serial.print("iter "); 
       Serial.print(1<<i); 
