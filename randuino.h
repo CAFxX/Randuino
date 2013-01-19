@@ -39,7 +39,7 @@ namespace {
       
       void init() {
         Sha256Class::init();
-        writeData(ctr++);
+        write(ctr++);
         iterations = 0;
         state = NOT_READY;
       }
@@ -66,12 +66,8 @@ namespace {
       void step() {
         if (state == NOT_INITED)
           init();
-        writeData(analogRead(inputPin));
+        write(analogRead(inputPin));
         iterations++;
-      }
-      
-      template <typename T> void writeData(const T& data) {
-        write(reinterpret_cast<uint8_t*>(&data), sizeof(data));
       }
       
       void random(unsigned char *out, unsigned int size, unsigned int iter) {
