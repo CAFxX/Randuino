@@ -72,12 +72,7 @@ namespace {
       }
       
       template <typename T> void writeData(const T& data) {
-        writeData(&data, sizeof(data));
-      }
-      
-      void writeData(void* ptr, int size) {
-        for (int i=0; i<size; i++)
-          write(((uint8_t*)ptr)[i]);
+        write(reinterpret_cast<uint8_t*>(&data), sizeof(data));
       }
       
       void random(unsigned char *out, unsigned int size, unsigned int iter) {
