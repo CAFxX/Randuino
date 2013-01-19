@@ -38,9 +38,6 @@ namespace {
       }
       
       void init() {
-        if (bg_generator_is_enabled())
-          return bg->init();
-          
         Sha256Class::init();
         write(ctr);
         write(ctr>>8);
@@ -52,11 +49,8 @@ namespace {
       }
       
       uint8_t* result(unsigned int _min_iterations = 0) {
-        if (_min_iterations == 0)
+        if (_min_iterations < min_iterations)
           _min_iterations = min_iterations;
-        if (bg_generator_is_enabled())
-          return bg->result(_min_iterations);
-          
         if (!is_ready(_min_iterations)) 
           return NULL;
         state = NOT_INITED;
@@ -64,11 +58,8 @@ namespace {
       }
       
       boolean is_ready(unsigned int _min_iterations = 0) {
-        if (_min_iterations == 0)
+        if (_min_iterations < min_iterations)
           _min_iterations = min_iterations;
-        if (bg_generator_is_enabled())
-          return bg->is_ready(_min_iterations);
-          
         if (state == NOT_INITED)
           return false;
         boolean ready = iterations >= _min_iterations;
@@ -77,9 +68,6 @@ namespace {
       }
       
       void step() {
-        if (bg_generator_is_enabled())
-          return;
-
         if (state == NOT_INITED)
           init();
         unsigned int in = analogRead(inputPin);
@@ -101,32 +89,9 @@ namespace {
         return 0;
       }
       
-    private:
-      static randuino* bg;
-      
-    public:      
-      static boolean enable_bg_generator() {
-        if (bg_generator_is_enabled())
-          disable_bg_generator();
-        bg = new randuino();
-        return bg_generator_is_enabled();
-      }
-      
-      static boolean disable_bg_generator() {
-        if (bg != NULL)
-          delete bg;
-        bg = NULL;
-        return bg_generator_is_enabled();
-      }
-      
-      static boolean bg_generator_is_enabled() {
-        return false;
-        return bg != NULL;
-      }
   };
   
   unsigned long randuino::ctr = 0;
-  randuino* randuino::bg = NULL;
 
 }
 
