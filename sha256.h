@@ -41,6 +41,9 @@ struct Sha256Class
     uint8_t* result(void);
     void write(uint8_t);
     void write(uint8_t*, int);
+    template <typename T> void write(const T& data) {
+      write(reinterpret_cast<uint8_t*>(&data), sizeof(data));
+    }
 
   private:
     void pad();
