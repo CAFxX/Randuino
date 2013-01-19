@@ -66,8 +66,7 @@ namespace {
       void step() {
         if (state == NOT_INITED)
           init();
-        unsigned int in = analogRead(inputPin);
-        writeData(in);
+        writeData(analogRead(inputPin));
         iterations++;
       }
       
