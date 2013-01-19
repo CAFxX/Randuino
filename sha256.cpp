@@ -117,6 +117,11 @@ void Sha256Class::write(uint8_t data) {
   addUncounted(data);
 }
 
+void Sha256Class::write(uint8_t* data, int size) {
+  for (int i=0; i<size; i++)
+    write(data[i]);
+}
+
 void Sha256Class::pad() {
   // Implement SHA-256 padding (fips180-2 �5.1.1)
 
