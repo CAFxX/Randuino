@@ -40,6 +40,7 @@ struct Sha256Class
     void init(void);
     uint8_t* result(void);
     void write(uint8_t);
+    void write(uint8_t*, int);
 
   private:
     void pad();
