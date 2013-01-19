@@ -17,16 +17,14 @@
 */
 
 #include <string.h>
-#include <avr/io.h>
-#include <avr/pgmspace.h>
 #include "sha256.h"
 
-#ifndef RANDUINO_USE_PROGMEM
-#undef PROGMEM
+#ifdef RANDUINO_USE_PROGMEM
+#include <avr/io.h>
+#include <avr/pgmspace.h>
+#else
 #define PROGMEM
-#undef pgm_read_dword
 #define pgm_read_dword(x) (*(x))
-#undef memcpy_P
 #define memcpy_P(x, y, z) memcpy(x, y, z)
 #endif
 
