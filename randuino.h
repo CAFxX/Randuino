@@ -75,8 +75,7 @@ namespace {
         iterations++;
       }
       
-      static int rand(unsigned char *out, unsigned int size, unsigned int iter) {
-        randuino r(iter);
+      void random(unsigned char *out, unsigned int size, unsigned int iter) {
         uint8_t *res;
         unsigned int i = 0;
         
@@ -86,7 +85,11 @@ namespace {
           memcpy(out+i, res, min(HASH_LENGTH, size-i));
           i += HASH_LENGTH;
         }
-        return 0;
+      }
+
+      static void rand(unsigned char *out, unsigned int size, unsigned int iter) {
+        randuino r(iter);
+        r.random(out, size, iter);
       }
       
   };
