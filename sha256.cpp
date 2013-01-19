@@ -21,6 +21,15 @@
 #include <avr/pgmspace.h>
 #include "sha256.h"
 
+#ifndef RANDUINO_USE_PROGMEM
+#undef PROGMEM
+#define PROGMEM
+#undef pgm_read_dword
+#define pgm_read_dword(x) (*(x))
+#undef memcpy_P
+#define memcpy_P(x, y, z) memcpy(x, y, z)
+#endif
+
 uint32_t sha256K[] PROGMEM = {
   0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
   0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
