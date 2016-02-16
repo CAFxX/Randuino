@@ -24,14 +24,16 @@ The iterations parameter controls the speed of the generator; doubling its value
 
 Inside trng.pde, there is a function called trng_benchmark that prints on serial the throughput for different parameters. This is an example output on a Arduino Uno (ATmega328):
 
-iter 128, size 32: 47868 (668.51bytes/s)
-iter 256, size 32: 84520 (378.61bytes/s)
-iter 512, size 32: 158128 (202.37bytes/s)
-iter 1024, size 32: 305220 (104.84bytes/s)
-iter 2048, size 32: 599388 (53.39bytes/s)
-iter 4096, size 32: 1187912 (26.94bytes/s)
-iter 8192, size 32: 2364804 (13.53bytes/s)
-iter 16384, size 32: 4718668 (6.78bytes/s)
+| iter  | size | time    | bytes/s |
+|------:|-----:|--------:|--------:|
+| 128   | 32   | 47868   | 668.51  |
+| 256   | 32   | 84520   | 378.61  |
+| 512   | 32   | 158128  | 202.37  |
+| 1024  | 32   | 305220  | 104.84  |
+| 2048  | 32   | 599388  | 53.39   |
+| 4096  | 32   | 1187912 | 26.94   |
+| 8192  | 32   | 2364804 | 13.53   |
+| 16384 | 32   | 4718668 | 6.78    |
 
 ## Components
 The SHA-256 library is a (slightly) modified version of the one available on http://code.google.com/p/cryptosuite/
